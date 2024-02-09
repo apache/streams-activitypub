@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "id": "#",
+  "type": "object",
+  "javaType": "org.apache.streams.activitypub.api.pojo.WebfingerQueryRequest",
+  "javaInterfaces": [
+    "java.io.Serializable"
+  ],
+  "properties": {
+    "resource": {
+      "type": "string"
+    },
+    "rel": {
+      "type": "array",
+      "required": false,
+      "items": {
+        "type": "string",
+        "format": "uri"
+      }
+    }
+  }
+}
