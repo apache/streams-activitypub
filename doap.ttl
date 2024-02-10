@@ -1,0 +1,48 @@
+@base         <http://streams.apache.org.org/rdf> .
+@prefix as:   <https://www.w3.org/ns/activitystreams#> .
+@prefix asfext: <http://projects.apache.org/ns/asfext#> .
+#@prefix dc:   <http://purl.org/dc/terms/> .
+@prefix doap: <http://usefulinc.com/ns/doap#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <https://schema.org/> .
+@prefix sec: <https://w3id.org/security/v1> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix vcard:   <http://www.w3.org/2006/vcard/ns#> .
+
+<> a doap:Project ;
+   doap:name          "Apache Streams ActivityPub Server"@en ;
+   doap:homepage      <https://streams.apache.org> ;
+   doap:license       <https://spdx.org/licenses/Apache-2.0> ;
+   doap:shortdesc     "Apache Streams unifies a diverse world of digital profiles and online activities into common formats and vocabularies, and makes these datasets accessible across a variety of databases, devices, and platforms for streaming, browsing, search, sharing, and analytics use-cases."@en ;
+   doap:description   """
+     Apache Streams contains JRE-based modules that developers can use to easily integrate with online data sources and build polyglot indexes of activities, entities, and relationships - all based on public standards such as Activity Streams, or other published organizational standards.
+     Streams contains libraries and patterns for specifying, publishing, and inter-linking schemas, and assists with conversion of activities (posts, shares, likes, follows, etc.) and objects (profiles, pages, photos, videos, etc.) between the representation, format, and encoding preferred by supported data providers (Twitter, Instagram, etc.), and storage services (Cassandra, Elasticsearch, HBase, HDFS, Neo4J, etc.)
+     The project aims to provide simple two-way data interchange with all popular REST APIs in activity streams formats using a universal protocol. No other active open-source project has this ambitious goal, as well as production-worthy implementations for >10 services. Streams compatibility with multiple storage back-ends and ability to be embedded within any java-based real-time or batch data processing platform ensures that its interoperability features come with little technical baggage.
+   """ ;
+   doap:created       "2024-01-22" ;
+   doap:programming-language "Scala" ;
+   doap:category      <https://projects.apache.org/category/content> ;
+   doap:implements    <https://www.w3.org/TR/activitystreams-core>,
+                      <https://www.w3.org/TR/activitystreams-vocabulary>,
+                      <https://www.w3.org/TR/activitypub>,
+                      <https://www.w3.org/TR/json-ld> ;
+   doap:download-page <https://github.com/apache/streams-activitypub/tags> ;
+   doap:bug-database  <https://github.com/orgs/apache/projects/309> ;
+   doap:developer     <https://mastodon.social/users/steveblackmon> ;
+.
+
+<https://mastodon.social/users/steveblackmon> a as:Person ;
+   as:id "https://mastodon.social/@steveblackmon" ;
+   as:name "Steve Blackmon"@en ;
+   vcard:given-name "Steve"@en ;
+   vcard:family-name "Blackmon"@en ;
+   vcard:email "sblackmon@apache.org" ;
+   as:summary "Techie, Dad, Salesforce, PMC Chair of http://streams.apache.org"@en ;
+   as:preferredUsername "steveblackmon"@en ;
+   as:inbox <https://mastodon.social/users/steveblackmon/inbox> ;
+   as:outbox <https://mastodon.social/users/steveblackmon/outbox> ;
+   as:followers <https://mastodon.social/users/steveblackmon/followers> ;
+   as:following <https://mastodon.social/users/steveblackmon/following> ;
+.
