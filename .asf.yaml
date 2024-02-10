@@ -30,3 +30,9 @@ github:
     - activitypub
   protected_branches:
     main: {}
+  notifications:
+    commits: commits@streams.apache.org
+    issues: commits@streams.apache.org
+    pullrequests: commits@streams.apache.org
+    jobs: commits@streams.apache.org
+    discussions: dev@streams.apache.org
