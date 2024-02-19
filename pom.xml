@@ -16,7 +16,7 @@
   ~ specific language governing permissions and limitations
   ~ under the License.
   -->
-<project xmlns="https://maven.apache.org/POM/4.0.0" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0">
 
     <modelVersion>4.0.0</modelVersion>
 
@@ -677,11 +677,15 @@
                         <skipTests>${skipTests}</skipTests>
                         <useUnlimitedThreads>true</useUnlimitedThreads>
                         <forkCount>1</forkCount>
+                        <redirectTestOutputToFile>true</redirectTestOutputToFile>
                         <reuseForks>true</reuseForks>
                         <includes>
                             <include>**/*TestSuite.java</include>
                         </includes>
                         <reportFormat>xml</reportFormat>
+                        <systemPropertyVariables>
+                            <logback.configurationFile>${project.basedir}/src/test/resources/logback-test.xml</logback.configurationFile>
+                        </systemPropertyVariables>
                     </configuration>
                     <dependencies>
                         <dependency>

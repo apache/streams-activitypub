@@ -31,6 +31,9 @@ import org.apache.streams.activitypub.servlets.WebfingerServlet.webfinger
  */
 
 object WebfingerServlet {
+
+  final val PATH = ".well-known/webfinger"
+
   given webfinger : WebfingerApi = WebfingerGraphImpl.DEFAULT
 
 }
@@ -51,6 +54,8 @@ object WebfingerServlet {
   allowedMethodParams = "*"
 )
 class WebfingerServlet extends BasicRestServlet with WebfingerRest {
+
+  import WebfingerServlet.webfinger
 
   override def init(servletConfig: ServletConfig): Unit = {
     super.init(servletConfig)

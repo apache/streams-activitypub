@@ -11,6 +11,7 @@ import org.junit.jupiter.api.extension.ExtendWith
 import org.slf4j.LoggerFactory
 
 import scala.concurrent.duration.MINUTES
+import scala.concurrent.duration.SECONDS
 import scala.util.Try;
 
 @ExtendWith(Array(classOf[ActivityPubWebappTestSuiteExtension]))
@@ -26,7 +27,7 @@ class WebappServerAvailableTest extends AwaitilitySupport {
     @Test
     def testWebappServerAvailable(using helper: ActivityPubWebappTestSuiteExtension) : Unit = {
         val testAttempt = Try {
-            await atMost(5, MINUTES) untilAsserted {
+            await atMost(1, MINUTES) pollInterval(1, SECONDS) untilAsserted {
                 helper.server.getStateName.matches("STARTED")
             }
         }

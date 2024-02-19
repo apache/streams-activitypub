@@ -114,12 +114,6 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.apache.tomcat.embed</groupId>
-            <artifactId>tomcat-embed-core</artifactId>
-            <version>${tomcat.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.apache.jena</groupId>
             <artifactId>jena-fuseki-main</artifactId>
             <version>${jena.version}</version>

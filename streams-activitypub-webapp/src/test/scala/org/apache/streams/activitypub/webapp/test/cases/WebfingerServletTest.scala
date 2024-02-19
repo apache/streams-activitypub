@@ -3,6 +3,7 @@ package org.apache.streams.activitypub.webapp.test.cases
 import org.apache.http.HttpStatus
 import org.apache.http.client.utils.URIBuilder
 import org.apache.http.entity.ContentType
+import org.apache.streams.activitypub.servlets.WebfingerServlet
 import org.apache.streams.activitypub.webapp.test.ActivityPubWebappTestSuiteExtension
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Order
@@ -19,7 +20,7 @@ class WebfingerServletTest(using helper: ActivityPubWebappTestSuiteExtension) {
 
     private val uriBuilder : URIBuilder = helper.uriBuilder
       .setCharset(Charset.defaultCharset())
-      .setPath(".well-known/webfinger")
+      .setPath(WebfingerServlet.PATH)
 
     /**
      * Test the WebfingerServlet with a valid abbreviated-form esource parameter
