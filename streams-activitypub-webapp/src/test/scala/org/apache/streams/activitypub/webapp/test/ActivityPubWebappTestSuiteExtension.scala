@@ -1,10 +1,7 @@
 package org.apache.streams.activitypub.webapp.test
 
 import org.apache.catalina.Context
-import org.apache.catalina.Loader
 import org.apache.catalina.Server
-import org.apache.catalina.loader.WebappClassLoaderBase
-import org.apache.catalina.loader.WebappLoader
 import org.apache.catalina.startup.Tomcat
 import org.apache.http.client.utils.URIBuilder
 import org.apache.http.impl.NoConnectionReuseStrategy
@@ -17,11 +14,9 @@ import org.junit.jupiter.api.extension.ParameterResolver
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
-import java.io.File
 import java.net.URI
 import java.nio.file.Path
 import java.nio.file.Paths
-import java.nio.file.Files
 
 class ActivityPubWebappTestSuiteExtension extends ParameterResolver with BeforeAllCallback with AfterAllCallback {
 
@@ -36,7 +31,7 @@ class ActivityPubWebappTestSuiteExtension extends ParameterResolver with BeforeA
     case "streams-activitypub-webapp" => Paths.get(basePathDir, "target/streams-activitypub-webapp")
   }
   private val webapp: String = webappPath.toAbsolutePath.toString
-  
+
   private val tomcat: Tomcat = new Tomcat()
   tomcat.enableNaming()
   tomcat.setBaseDir(basePathDir)
@@ -81,24 +76,13 @@ class ActivityPubWebappTestSuiteExtension extends ParameterResolver with BeforeA
 
   override def afterAll(extensionContext: ExtensionContext): Unit = {
     LOGGER.info("afterAll()")
-    try {
-      tomcat.stop();
-    } catch {
-      case e: Exception => LOGGER.error("Exception while stopping tomcat", e);
-    } finally {
-      try {
-        tomcat.destroy();
-      } catch {
-        case e: Exception => LOGGER.error("Exception while destoying tomcat", e);
-      }
-    }
   }
 
   override def supportsParameter(parameterContext: ParameterContext, extensionContext: ExtensionContext): Boolean = {
-    false
+    parameterContext.getParameter.getType.equals(this.getClass)
   }
 
   override def resolveParameter(parameterContext: ParameterContext, extensionContext: ExtensionContext): AnyRef = {
-    null
+    this
   }
 }

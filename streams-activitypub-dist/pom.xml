@@ -42,25 +42,74 @@ under the License.
     </dependencies>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+            </testResource>
+        </testResources>
        <plugins>
            <plugin>
                <groupId>org.apache.maven.plugins</groupId>
                <artifactId>maven-dependency-plugin</artifactId>
                <executions>
                    <execution>
-                       <id>unpack</id>
-                       <phase>prepare-package</phase>
+                       <id>copy</id>
+                       <phase>package</phase>
                        <goals>
-                           <goal>unpack</goal>
+                           <goal>copy</goal>
                        </goals>
                        <configuration>
-                           <outputDirectory>${project.build.directory}/exploded</outputDirectory>
                            <artifactItems>
                                <artifactItem>
                                    <groupId>org.apache.streams.activitypub</groupId>
                                    <artifactId>streams-activitypub-webapp</artifactId>
                                    <version>${project.version}</version>
                                    <type>war</type>
+                                   <outputDirectory>${project.build.directory}/webapps</outputDirectory>
+                                   <overWrite>true</overWrite>
+                                   <destFileName>streams-activitypub.war</destFileName>
+                               </artifactItem>
+                               <artifactItem>
+                                   <groupId>org.apache.jena</groupId>
+                                   <artifactId>jena-fuseki-war</artifactId>
+                                   <version>${jena.version}</version>
+                                   <type>war</type>
+                                   <outputDirectory>${project.build.directory}/webapps</outputDirectory>
+                                   <overWrite>true</overWrite>
+                                   <destFileName>jena-fuseki.war</destFileName>
+                               </artifactItem>
+                               <!-- the fuseki war excludes some needed dependencies -->
+                               <artifactItem>
+                                   <groupId>org.eclipse.jetty</groupId>
+                                   <artifactId>jetty-http</artifactId>
+                                   <version>${jetty.version}</version>
+                                   <type>jar</type>
+                                   <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                                   <overWrite>true</overWrite>
+                                   <destFileName>jetty-http.jar</destFileName>
+                               </artifactItem>
+                               <artifactItem>
+                                   <groupId>org.eclipse.jetty</groupId>
+                                   <artifactId>jetty-util</artifactId>
+                                   <version>${jetty.version}</version>
+                                   <type>jar</type>
+                                   <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                                   <overWrite>true</overWrite>
+                                   <destFileName>jetty-util.jar</destFileName>
+                               </artifactItem>
+                               <artifactItem>
+                                   <groupId>org.slf4j</groupId>
+                                   <artifactId>slf4j-api</artifactId>
+                                   <version>${slf4j.version}</version>
+                                   <type>jar</type>
+                                   <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                                   <overWrite>true</overWrite>
+                                   <destFileName>slf4j-api.jar</destFileName>
                                </artifactItem>
                            </artifactItems>
                        </configuration>

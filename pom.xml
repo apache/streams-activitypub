@@ -365,6 +365,8 @@
         <jackson.version>2.16.0</jackson.version>
         <jakarta.version>6.0.0</jakarta.version>
         <jakarta-ws.version>3.1.0</jakarta-ws.version>
+        <jena.version>5.0.0-rc1</jena.version>
+        <jetty.version>12.0.6</jetty.version>
         <joda-convert.version>1.8.1</joda-convert.version>
         <joda-time.version>2.9.9</joda-time.version>
         <json-path.version>2.8.0</json-path.version>
@@ -417,14 +419,22 @@
         <module>streams-activitypub-actors</module>
         <module>streams-activitypub-api</module>
         <module>streams-activitypub-dist</module>
+        <module>streams-activitypub-graph</module>
         <module>streams-activitypub-remote</module>
         <module>streams-activitypub-servlets</module>
+        <module>streams-activitypub-utils</module>
         <module>streams-activitypub-webapp</module>
     </modules>
 
     <packaging>pom</packaging>
 
     <build>
+        <testResources>
+            <testResource>
+                <directory>${project.basedir}</directory>
+                <filtering>true</filtering>
+            </testResource>
+        </testResources>
         <extensions>
             <extension>
                 <groupId>org.apache.maven.wagon</groupId>
@@ -553,19 +563,34 @@
                     <artifactId>jsonschema2pojo-maven-plugin</artifactId>
                     <version>${jsonschema2pojo.version}</version>
                     <configuration>
+                        <addCompileSourceRoot>true</addCompileSourceRoot>
                         <annotationStyle>none</annotationStyle>
                         <customAnnotator>org.apache.streams.plugins.JuneauPojoAnnotator</customAnnotator>
                         <generateBuilders>true</generateBuilders>
                         <includeGeneratedAnnotation>false</includeGeneratedAnnotation>
-                        <sourceDirectory>${project.basedir}/src/main/jsonschema</sourceDirectory>
-                        <outputDirectory>${project.build.directory}/generated-sources/pojo</outputDirectory>
                     </configuration>
                     <executions>
                         <execution>
-                            <phase>generate-sources</phase>
+                            <id>generate-sources</id>
+                            <phase>none</phase>
                             <goals>
                                 <goal>generate</goal>
                             </goals>
+                            <configuration>
+                                <sourceDirectory>${project.basedir}/src/main/jsonschema</sourceDirectory>
+                                <outputDirectory>${project.build.directory}/generated-sources/pojo</outputDirectory>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>generate-test-sources</id>
+                            <phase>none</phase>
+                            <goals>
+                                <goal>generate</goal>
+                            </goals>
+                            <configuration>
+                                <sourceDirectory>${project.basedir}/src/test/jsonschema</sourceDirectory>
+                                <outputDirectory>${project.build.directory}/generated-test-sources/pojo</outputDirectory>
+                            </configuration>
                         </execution>
                     </executions>
                     <dependencies>
@@ -625,6 +650,18 @@
                             <configuration>
                                 <sources>
                                     <source>target/generated-sources/pojo</source>
+                                </sources>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>add-generated-test-sources</id>
+                            <phase>generate-test-sources</phase>
+                            <goals>
+                                <goal>add-source</goal>
+                            </goals>
+                            <configuration>
+                                <sources>
+                                    <source>target/generated-test-sources/pojo</source>
                                 </sources>
                             </configuration>
                         </execution>
@@ -1467,6 +1504,11 @@
                             <argLine>--add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED</argLine>
                             <skipTests>${skipTests}</skipTests>
                             <skipExec>${skipExec}</skipExec>
+                            <properties>
+                                <configurationParameters>
+                                    junit.jupiter.testclass.order.default=org.junit.jupiter.api.ClassOrderer$OrderAnnotation
+                                </configurationParameters>
+                            </properties>
                         </configuration>
                     </plugin>
                 </plugins>

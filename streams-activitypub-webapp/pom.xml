@@ -53,6 +53,11 @@
         </dependency>
         <dependency>
             <groupId>org.apache.streams.activitypub</groupId>
+            <artifactId>streams-activitypub-graph</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.streams.activitypub</groupId>
             <artifactId>streams-activitypub-servlets</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -68,6 +73,16 @@
 <!--            <version>${tomcat.version}</version>-->
 <!--            <scope>provided</scope>-->
 <!--        </dependency>-->
+
+        <!-- streams-activitypub-webapp test dependencies -->
+        <dependency>
+            <groupId>org.apache.streams.activitypub</groupId>
+            <artifactId>streams-activitypub-graph</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+            <type>test-jar</type>
+        </dependency>
+
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-core</artifactId>
@@ -102,6 +117,27 @@
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-core</artifactId>
             <version>${tomcat.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.jena</groupId>
+            <artifactId>jena-fuseki-main</artifactId>
+            <version>${jena.version}</version>
+            <type>jar</type>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.jena</groupId>
+            <artifactId>jena-arq</artifactId>
+            <version>${jena.version}</version>
+            <type>jar</type>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.jena</groupId>
+            <artifactId>jena-rdfconnection</artifactId>
+            <version>${jena.version}</version>
+            <type>jar</type>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -163,6 +199,30 @@
                         </resource>
                     </webResources>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>process-test-resources</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.testOutputDirectory}</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>..</directory>
+                                    <includes>
+                                        <include>*.ttl</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

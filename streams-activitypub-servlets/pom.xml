@@ -29,7 +29,7 @@
     <artifactId>streams-activitypub-servlets</artifactId>
     <name>${project.artifactId}</name>
 
-    <description>Apache Streams Resource Classes (Servlets)</description>
+    <description>Apache Streams Servlet Classes</description>
 
     <packaging>jar</packaging>
 
@@ -47,6 +47,11 @@
         <dependency>
             <groupId>org.apache.streams.activitypub</groupId>
             <artifactId>streams-activitypub-remote</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.streams.activitypub</groupId>
+            <artifactId>streams-activitypub-graph</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
