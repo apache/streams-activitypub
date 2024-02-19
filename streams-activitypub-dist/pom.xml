@@ -59,11 +59,12 @@ under the License.
                <executions>
                    <execution>
                        <id>copy</id>
-                       <phase>prepare-package</phase>
+                       <phase>package</phase>
                        <goals>
                            <goal>copy</goal>
                        </goals>
                        <configuration>
+                           <outputDirectory>${project.build.directory}/exploded</outputDirectory>
                            <artifactItems>
                                <artifactItem>
                                    <groupId>org.apache.streams.activitypub</groupId>
