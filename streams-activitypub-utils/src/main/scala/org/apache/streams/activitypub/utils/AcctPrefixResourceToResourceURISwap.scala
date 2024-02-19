@@ -1,4 +1,4 @@
-package org.apache.streams.activitypub.util
+package org.apache.streams.activitypub.utils
 
 import org.apache.http.client.utils.URIBuilder
 import org.apache.juneau.BeanSession

@@ -4,28 +4,17 @@ import jakarta.servlet.ServletConfig
 import jakarta.servlet.http.HttpServletResponse
 import jakarta.ws.rs.core.MediaType
 import org.apache.juneau.html.HtmlSerializer
-import org.apache.juneau.http.annotation.Query
 import org.apache.juneau.json.JsonSerializer
 import org.apache.juneau.rest.RestRequest
 import org.apache.juneau.rest.RestResponse
 import org.apache.juneau.rest.annotation.Rest
 import org.apache.juneau.rest.annotation.RestGet
-import org.apache.juneau.rest.httppart.RequestQueryParams
-import org.apache.juneau.rest.matcher.RestMatcher
 import org.apache.juneau.rest.servlet.BasicRestServlet
-import org.apache.streams.activitypub.api.pojo.Link
-import org.apache.streams.activitypub.api.pojo.Properties
-import org.apache.streams.activitypub.api.pojo.WebfingerQueryRequest
-import org.apache.streams.activitypub.api.pojo.WebfingerQueryResponse
+import org.apache.streams.activitypub.api.WebfingerApi
+import org.apache.streams.activitypub.api.pojo.webfinger.WebfingerQueryRequest
+import org.apache.streams.activitypub.api.pojo.webfinger.WebfingerQueryResponse
 import org.apache.streams.activitypub.graph.impl.WebfingerGraphImpl
 import org.apache.streams.activitypub.remote.WebfingerRest
-import org.apache.streams.activitypub.api.WebfingerApi
-
-import java.net.URI
-import java.util.ArrayList
-import java.util.Optional
-import scala.collection.mutable.Buffer
-import scala.util.Try
 
 /**
  * org.apache.streams.activitypub.servlets.WebfingerResource response to inquires about any URI, typically an item in one of the published feeds, or one of the

@@ -4,8 +4,10 @@ import org.apache.http.HttpStatus
 import org.apache.http.client.utils.URIBuilder
 import org.apache.http.entity.ContentType
 import org.apache.streams.activitypub.servlets.WebfingerServlet
+import org.apache.streams.activitypub.webapp.test.ActivityPubWebappTestSuite
 import org.apache.streams.activitypub.webapp.test.ActivityPubWebappTestSuiteExtension
 import org.junit.jupiter.api.DisplayName
+import org.junit.jupiter.api.Order
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.slf4j.Logger
@@ -18,7 +20,7 @@ class WebfingerServletTest(using helper: ActivityPubWebappTestSuiteExtension) {
 
     private final val LOGGER = LoggerFactory.getLogger(classOf[WebfingerServletTest]);
 
-    private val uriBuilder : URIBuilder = ActivityPubWebappTestSuite.helper.uriBuilder
+    private val uriBuilder : URIBuilder = helper.uriBuilder
       .setCharset(Charset.defaultCharset())
       .setPath(WebfingerServlet.PATH)
 

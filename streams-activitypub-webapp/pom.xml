@@ -58,6 +58,11 @@
         </dependency>
         <dependency>
             <groupId>org.apache.streams.activitypub</groupId>
+            <artifactId>streams-activitypub-server</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.streams.activitypub</groupId>
             <artifactId>streams-activitypub-servlets</artifactId>
             <version>${project.version}</version>
         </dependency>

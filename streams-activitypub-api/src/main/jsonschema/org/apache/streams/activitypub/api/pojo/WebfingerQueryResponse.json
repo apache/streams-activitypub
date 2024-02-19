@@ -5,7 +5,7 @@
   "$license": [
     "http://www.apache.org/licenses/LICENSE-2.0"
   ],
-  "javaType" : "org.apache.streams.activitypub.api.pojo.WebfingerQueryResponse",
+  "javaType" : "org.apache.streams.activitypub.api.pojo.webfinger.WebfingerQueryResponse",
   "javaInterfaces": ["java.io.Serializable"],
   "properties": {
     "subject": {

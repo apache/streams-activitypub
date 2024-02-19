@@ -23,7 +23,8 @@ class ServletRegistrationTest {
     def testAllServletsRegistered(using helper: ActivityPubWebappTestSuiteExtension) : Unit = {
         val servletRegistrations = helper.context.getServletContext.getServletRegistrations()
         Assertions.assertNotNull(servletRegistrations)
-        Assertions.assertEquals(2, servletRegistrations.size())
+        Assertions.assertEquals(3, servletRegistrations.size())
+        Assertions.assertTrue(servletRegistrations.containsKey("nodeinfo2"))
         Assertions.assertTrue(servletRegistrations.containsKey("root"))
         Assertions.assertTrue(servletRegistrations.containsKey("webfinger"))
     }
