@@ -18,46 +18,38 @@
   -->
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
-    <modelVersion>4.0.0</modelVersion>
-
     <parent>
         <artifactId>apache-streams-activitypub</artifactId>
         <groupId>org.apache.streams.activitypub</groupId>
         <version>0.8.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
+    <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>streams-activitypub-remote</artifactId>
-    <description>Apache Streams Remoting</description>
+    <artifactId>streams-activitypub-utils</artifactId>
     <name>${project.artifactId}</name>
+
+    <description>Apache Streams Utility Classes</description>
+
     <packaging>jar</packaging>
 
     <dependencies>
-
         <dependency>
-            <groupId>org.apache.streams.activitypub</groupId>
-            <artifactId>streams-activitypub-api</artifactId>
-            <version>${project.version}</version>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>${httpcomponents.client.version}</version>
         </dependency>
-
-        <!-- streams-remote only dependencies -->
+        <!-- streams-activitypub-utils only dependencies -->
         <dependency>
             <groupId>org.apache.juneau</groupId>
-            <artifactId>juneau-rest-client</artifactId>
+            <artifactId>juneau-marshall</artifactId>
             <version>${juneau.version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.apache.streams</groupId>
-            <artifactId>streams-testing</artifactId>
-            <version>${project.version}</version>
-            <scope>test</scope>
-            <type>test-jar</type>
-        </dependency>
+        <!-- streams-activitypub-utils only test dependencies -->
     </dependencies>
     <build>
         <sourceDirectory>src/main/scala</sourceDirectory>
+        <testSourceDirectory>src/test/scala</testSourceDirectory>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -70,21 +62,16 @@
         </testResources>
         <plugins>
             <plugin>
-                <groupId>net.alchim31.maven</groupId>
-                <artifactId>scala-maven-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>scala-compile</id>
-                        <phase>compile</phase>
                         <goals>
-                            <goal>compile</goal>
+                            <goal>jar</goal>
+                            <goal>test-jar</goal>
                         </goals>
                     </execution>
                 </executions>
-                <configuration>
-                    <addScalacArgs>--explain</addScalacArgs>
-                    <scalaVersion>${scala.version}</scalaVersion>
-                </configuration>
             </plugin>
         </plugins>
     </build>

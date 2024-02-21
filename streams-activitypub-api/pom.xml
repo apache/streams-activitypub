@@ -81,13 +81,10 @@
             <plugin>
                 <groupId>org.jsonschema2pojo</groupId>
                 <artifactId>jsonschema2pojo-maven-plugin</artifactId>
-                <version>1.2.1</version>
+                <version>${jsonschema2pojo.version}</version>
                 <executions>
                     <execution>
                         <id>generate-sources</id>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
                         <phase>generate-sources</phase>
                     </execution>
                 </executions>

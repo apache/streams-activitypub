@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "id": "#",
+  "type": "object",
+  "javaType": "org.apache.streams.activitypub.graph.test.config.ActivityPubGraphTestSuiteExtensionConfig",
+  "javaInterfaces": [
+    "java.io.Serializable"
+  ],
+  "properties": {
+    "fusekiEndpointURI": {
+      "type": "string",
+      "format": "uri",
+      "required": true
+    },
+    "testDatasetResource": {
+      "type": "string",
+      "format": "uri",
+      "required": true
+    },
+    "testDatasetId": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

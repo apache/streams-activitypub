@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "id": "#",
+  "type": "object",
+  "javaType": "org.apache.streams.activitypub.graph.config.WebfingerGraphImplConfig",
+  "javaInterfaces": [
+    "java.io.Serializable"
+  ],
+  "properties": {
+    "fusekiEndpointURI": {
+      "type": "string",
+      "format": "uri",
+      "required": true
+    },
+    "defaultDatasetId": {
+      "type": "string",
+      "required": false
+    }
+  }
+}

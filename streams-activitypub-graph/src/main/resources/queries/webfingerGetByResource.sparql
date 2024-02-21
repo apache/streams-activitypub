@@ -1,0 +1,9 @@
+BASE <>
+PREFIX r: <classpath://WebfingerQueryResponse.json>
+CONSTRUCT {
+    <r:response> <#subject> ?resource .
+    <r:response> <#alias> ?alias
+} WHERE {
+    BIND( ?resourceParam as ?resource )
+
+}
