@@ -7,8 +7,6 @@ import org.apache.jena.query.Dataset
 import org.apache.jena.query.DatasetFactory
 import org.apache.jena.riot.RDFDataMgr
 import org.apache.juneau.rest.client.RestClient
-import org.apache.streams.activitypub.graph.config.WebfingerGraphImplConfig
-import org.apache.streams.activitypub.graph.impl.WebfingerGraphImpl
 import org.apache.streams.activitypub.graph.test.config.ActivityPubGraphTestSuiteExtensionConfig
 import org.apache.streams.config.ComponentConfigurator
 import org.junit.jupiter.api.extension.AfterAllCallback

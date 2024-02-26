@@ -42,4 +42,14 @@
         <servlet-name>webfinger</servlet-name>
         <url-pattern>/.well-known/webfinger</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <display-name>NodeinfoServlet</display-name>
+        <servlet-name>nodeinfo2</servlet-name>
+        <servlet-class>org.apache.streams.activitypub.servlets.NodeinfoServlet</servlet-class>
+        <load-on-startup>5</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>nodeinfo2</servlet-name>
+        <url-pattern>/.well-known/x-nodeinfo2</url-pattern>
+    </servlet-mapping>
 </web-app>

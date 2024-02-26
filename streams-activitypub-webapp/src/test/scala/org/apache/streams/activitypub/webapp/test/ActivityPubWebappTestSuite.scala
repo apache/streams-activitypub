@@ -27,6 +27,7 @@ object ActivityPubWebappTestSuite {
   classOf[org.apache.streams.activitypub.webapp.test.cases.WebappServerAvailableTest],
   classOf[org.apache.streams.activitypub.webapp.test.cases.ServletRegistrationTest],
   classOf[org.apache.streams.activitypub.webapp.test.cases.RootServletTest],
+  classOf[org.apache.streams.activitypub.webapp.test.cases.NodeinfoServletTest],
   classOf[org.apache.streams.activitypub.webapp.test.cases.WebfingerServletTest]
 ))
 class ActivityPubWebappTestSuite {

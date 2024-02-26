@@ -1,7 +1,7 @@
-package org.apache.streams.activitypub.util.test.cases
+package org.apache.streams.activitypub.utils.test.cases
 
 import org.apache.http.client.utils.URIBuilder
-import org.apache.streams.activitypub.util.AcctPrefixResourceToResourceURISwap
+import org.apache.streams.activitypub.utils.AcctPrefixResourceToResourceURISwap
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test

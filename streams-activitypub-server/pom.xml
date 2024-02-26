@@ -26,15 +26,15 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>streams-activitypub-utils</artifactId>
+    <artifactId>streams-activitypub-server</artifactId>
     <name>${project.artifactId}</name>
 
-    <description>Apache Streams Utility Classes</description>
+    <description>Apache Streams Server Characteristic Classes</description>
 
     <packaging>jar</packaging>
 
     <dependencies>
-        <!-- streams-activitypub-utils internal dependencies -->
+        <!-- streams-activitypub-server internal dependencies -->
         <dependency>
             <groupId>org.apache.streams</groupId>
             <artifactId>streams-config</artifactId>
@@ -45,19 +45,6 @@
             <artifactId>streams-activitypub-api</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <!-- streams-activitypub-utils common dependencies -->
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>${httpcomponents.client.version}</version>
-        </dependency>
-        <!-- streams-activitypub-utils only dependencies -->
-        <dependency>
-            <groupId>org.apache.juneau</groupId>
-            <artifactId>juneau-marshall</artifactId>
-            <version>${juneau.version}</version>
-        </dependency>
-        <!-- streams-activitypub-utils only test dependencies -->
     </dependencies>
     <build>
         <sourceDirectory>src/main/scala</sourceDirectory>
@@ -73,6 +60,24 @@
             </testResource>
         </testResources>
         <plugins>
+            <plugin>
+                <groupId>org.jsonschema2pojo</groupId>
+                <artifactId>jsonschema2pojo-maven-plugin</artifactId>
+                <version>${jsonschema2pojo.version}</version>
+                <executions>
+                    <execution>
+                        <id>generate-sources</id>
+                        <phase>generate-sources</phase>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.streams.activitypub</groupId>
+                        <artifactId>streams-activitypub-api</artifactId>
+                        <version>${project.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>

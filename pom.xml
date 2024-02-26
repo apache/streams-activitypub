@@ -421,6 +421,7 @@
         <module>streams-activitypub-dist</module>
         <module>streams-activitypub-graph</module>
         <module>streams-activitypub-remote</module>
+        <module>streams-activitypub-server</module>
         <module>streams-activitypub-servlets</module>
         <module>streams-activitypub-utils</module>
         <module>streams-activitypub-webapp</module>

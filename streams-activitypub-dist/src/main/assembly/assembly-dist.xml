@@ -16,7 +16,7 @@
   ~ specific language governing permissions and limitations
   ~ under the License.
   -->
-<assembly xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<assembly>
     <id>dist</id>
     <formats>
         <format>zip</format>

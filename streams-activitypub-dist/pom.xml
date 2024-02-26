@@ -64,6 +64,7 @@ under the License.
                            <goal>copy</goal>
                        </goals>
                        <configuration>
+                           <outputDirectory>${project.build.directory}/exploded</outputDirectory>
                            <artifactItems>
                                <artifactItem>
                                    <groupId>org.apache.streams.activitypub</groupId>

@@ -7,10 +7,10 @@ import org.apache.jena.riot.system.PrefixMapStd
 import org.apache.jena.sparql.exec.http.QueryExecutionHTTP
 import org.apache.jena.sparql.exec.http.QueryExecutionHTTPBuilder
 import org.apache.streams.activitypub.api.WebfingerApi
-import org.apache.streams.activitypub.api.pojo.WebfingerQueryRequest
-import org.apache.streams.activitypub.api.pojo.WebfingerQueryResponse
+import org.apache.streams.activitypub.api.pojo.webfinger.WebfingerQueryRequest
+import org.apache.streams.activitypub.api.pojo.webfinger.WebfingerQueryResponse
 import org.apache.streams.activitypub.graph.config.WebfingerGraphImplConfig
-import org.apache.streams.activitypub.util.AcctPrefixResourceToResourceURISwap
+import org.apache.streams.activitypub.utils.AcctPrefixResourceToResourceURISwap
 import org.apache.streams.config.ComponentConfigurator
 
 import java.net.URI

@@ -1,12 +1,8 @@
 package org.apache.streams.activitypub.graph.test.cases
 
-import org.apache.http.HttpStatus
-import org.apache.http.client.utils.URIBuilder
-import org.apache.http.entity.ContentType
-import org.apache.streams.activitypub.api.pojo.WebfingerQueryRequest
-import org.apache.streams.activitypub.api.pojo.WebfingerQueryResponse
+import org.apache.streams.activitypub.api.pojo.webfinger.WebfingerQueryRequest
+import org.apache.streams.activitypub.api.pojo.webfinger.WebfingerQueryResponse
 import org.apache.streams.activitypub.graph.impl.WebfingerGraphImpl
-import org.apache.streams.activitypub.graph.test.ActivityPubGraphTestSuite
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.DisplayName
@@ -14,7 +10,6 @@ import org.junit.jupiter.api.Order
 import org.junit.jupiter.api.Test
 import org.slf4j.LoggerFactory
 
-import java.nio.charset.Charset
 import scala.util.Try;
 
 class WebfingerGraphImplTest {

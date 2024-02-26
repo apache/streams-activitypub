@@ -10,9 +10,9 @@ import org.apache.juneau.dto.html5.Head
 import org.apache.juneau.dto.html5.Html
 import org.apache.juneau.rest.mock.MockRestClient
 import org.apache.streams.activitypub.servlets.RootServlet
+import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.Assertions
 
 import scala.Option
 import scala.util.Try

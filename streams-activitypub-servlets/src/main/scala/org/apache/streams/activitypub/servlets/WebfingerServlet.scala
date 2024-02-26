@@ -11,11 +11,10 @@ import org.apache.juneau.rest.annotation.Rest
 import org.apache.juneau.rest.annotation.RestGet
 import org.apache.juneau.rest.servlet.BasicRestServlet
 import org.apache.streams.activitypub.api.WebfingerApi
-import org.apache.streams.activitypub.api.pojo.WebfingerQueryRequest
-import org.apache.streams.activitypub.api.pojo.WebfingerQueryResponse
+import org.apache.streams.activitypub.api.pojo.webfinger.WebfingerQueryRequest
+import org.apache.streams.activitypub.api.pojo.webfinger.WebfingerQueryResponse
 import org.apache.streams.activitypub.graph.impl.WebfingerGraphImpl
 import org.apache.streams.activitypub.remote.WebfingerRest
-import org.apache.streams.activitypub.servlets.WebfingerServlet.webfinger
 
 /**
  * org.apache.streams.activitypub.servlets.WebfingerResource response to inquires about any URI, typically an item in one of the published feeds, or one of the

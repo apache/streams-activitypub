@@ -63,6 +63,27 @@
             </testResource>
         </testResources>
         <plugins>
+            <!-- tried to acquire the nodeinfo schema this way,
+                 but the schema at the below url is invalid -->
+            <plugin>
+                <groupId>com.googlecode.maven-download-plugin</groupId>
+                <artifactId>download-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>download-schemas</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>wget</goal>
+                        </goals>
+                        <configuration>
+                            <url>https://raw.githubusercontent.com/jaywink/nodeinfo2/master/schemas/1.0/schema.json</url>
+                            <unpack>false</unpack>
+                            <outputDirectory>${project.build.directory}/download/jsonschema</outputDirectory>
+                            <outputFileName>nodeinfo2.json</outputFileName>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>net.alchim31.maven</groupId>
                 <artifactId>scala-maven-plugin</artifactId>
