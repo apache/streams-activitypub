@@ -7,6 +7,7 @@ import org.apache.jena.query.Dataset
 import org.apache.jena.query.DatasetFactory
 import org.apache.jena.riot.RDFDataMgr
 import org.apache.juneau.rest.client.RestClient
+import org.apache.streams.activitypub.graph.impl.BaseGraphImpl
 import org.apache.streams.activitypub.graph.test.config.ActivityPubGraphTestSuiteExtensionConfig
 import org.apache.streams.config.ComponentConfigurator
 import org.junit.jupiter.api.extension.AfterAllCallback
@@ -26,28 +27,34 @@ object ActivityPubGraphTestSuiteExtension {
 
 class ActivityPubGraphTestSuiteExtension extends ParameterResolver with BeforeAllCallback with AfterAllCallback {
 
-  import ActivityPubGraphTestSuiteExtension.config
+  import ActivityPubGraphTestSuiteExtension.config as testConfig
+  import BaseGraphImpl.config as graphConfig
 
   private final val LOGGER: Logger = LoggerFactory.getLogger(classOf[ActivityPubGraphTestSuiteExtension])
 
-  private val dataset : Dataset = DatasetFactory.create()
-  private val serverBuilder : FusekiServer.Builder = FusekiServer.create()
+  private val dataset: Dataset = DatasetFactory.create()
 
-  RDFDataMgr.read(dataset, config.getTestDatasetResource.toString)
+  private final val server: FusekiServer = {
+    val builder: FusekiServer.Builder = FusekiServer.create()
+      .add(graphConfig.getDefaultDataset, dataset)
+      .enablePing(true)
+      .loopback(true)
+      .port(testConfig.getFusekiEndpointURI.getPort)
+      .verbose(true)
+    graphConfig.getDatasetResources.forEach { resource =>
+      RDFDataMgr.read(builder.getDataset(graphConfig.getDefaultDataset).getDefaultGraph, resource.toString)
+    }
+    testConfig.getTestDatasetResources.forEach { resource =>
+      RDFDataMgr.read(builder.getDataset(graphConfig.getDefaultDataset).getDefaultGraph, resource.toString)
+    }
+    builder.build()
+  }.start()
 
-  private val server: FusekiServer = serverBuilder
-    .add(config.getTestDatasetId, dataset)
-    .enablePing(true)
-    .loopback(true)
-    .port(config.getFusekiEndpointURI.getPort)
-    .verbose(true)
-    .build();
-  server.start();
+  val serverUrlBuilder = new URIBuilder(server.serverURL())
+  val datasetUrlBuilder = new URIBuilder(server.datasetURL(graphConfig.getDefaultDataset))
 
-  val serverUrl = new URL(server.serverURL())
-  val datasetUrl = new URL(server.datasetURL(config.getTestDatasetId))
-  val serverUrlBuilder = new URIBuilder(serverUrl.toURI)
-  val datasetUrlBuilder = new URIBuilder(datasetUrl.toURI)
+  val serverUrl: URL = serverUrlBuilder.build().toURL
+  val datasetUrl: URL = datasetUrlBuilder.build().toURL
 
   def restClientBuilder: RestClient.Builder = RestClient.create()
     .connectionReuseStrategy(new NoConnectionReuseStrategy())

@@ -1,0 +1,4 @@
+BASE <>
+ASK {
+    ?resourceParam ?p ?o
+}

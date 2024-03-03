@@ -34,6 +34,18 @@ under the License.
 
         <dependency>
             <groupId>org.apache.streams.activitypub</groupId>
+            <artifactId>streams-activitypub-graph</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.streams.activitypub</groupId>
+            <artifactId>streams-activitypub-graph</artifactId>
+            <version>${project.version}</version>
+            <type>test-jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.streams.activitypub</groupId>
             <artifactId>streams-activitypub-webapp</artifactId>
             <version>${project.version}</version>
             <type>war</type>
@@ -58,13 +70,42 @@ under the License.
                <artifactId>maven-dependency-plugin</artifactId>
                <executions>
                    <execution>
+                       <id>unpack-resources</id>
+                       <phase>prepare-package</phase>
+                       <goals>
+                           <goal>unpack-dependencies</goal>
+                       </goals>
+                       <configuration>
+                           <excludeTransitive>true</excludeTransitive>
+                           <includeArtifactIds>streams-activitypub-graph</includeArtifactIds>
+                           <includeGroupIds>org.apache.streams.activitypub</includeGroupIds>
+                           <includeTypes>jar</includeTypes>
+                           <includes>*.owl,*.rdf,*.ttl</includes>
+                           <outputDirectory>${project.build.outputDirectory}</outputDirectory>
+                       </configuration>
+                   </execution>
+                   <execution>
+                       <id>unpack-test-resources</id>
+                       <phase>prepare-package</phase>
+                       <goals>
+                           <goal>unpack-dependencies</goal>
+                       </goals>
+                       <configuration>
+                           <excludeTransitive>true</excludeTransitive>
+                           <includeArtifactIds>streams-activitypub-graph</includeArtifactIds>
+                           <includeGroupIds>org.apache.streams.activitypub</includeGroupIds>
+                           <includeTypes>test-jar</includeTypes>
+                           <includes>*.owl,*.rdf,*.ttl</includes>
+                           <outputDirectory>${project.build.outputDirectory}</outputDirectory>
+                       </configuration>
+                   </execution>
+                   <execution>
                        <id>copy</id>
                        <phase>prepare-package</phase>
                        <goals>
                            <goal>copy</goal>
                        </goals>
                        <configuration>
-                           <outputDirectory>${project.build.directory}/exploded</outputDirectory>
                            <artifactItems>
                                <artifactItem>
                                    <groupId>org.apache.streams.activitypub</groupId>

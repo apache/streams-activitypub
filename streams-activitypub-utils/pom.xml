@@ -57,6 +57,24 @@
             <artifactId>juneau-marshall</artifactId>
             <version>${juneau.version}</version>
         </dependency>
+        <dependency>
+            <groupId>jakarta.json</groupId>
+            <artifactId>jakarta.json-api</artifactId>
+            <version>${jakarta-json.version}</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>jakarta.json</artifactId>
+            <version>${jakarta-json.version}</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>com.apicatalog</groupId>
+            <artifactId>titanium-json-ld</artifactId>
+            <version>${titanium.version}</version>
+            <type>jar</type>
+        </dependency>
         <!-- streams-activitypub-utils only test dependencies -->
     </dependencies>
     <build>

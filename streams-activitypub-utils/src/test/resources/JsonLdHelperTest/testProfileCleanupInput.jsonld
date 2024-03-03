@@ -1,0 +1,47 @@
+{
+    "@id": "https://mastodon.social/users/steveblackmon",
+    "as:url": {
+        "@id": "https://people.apache.org/~sblackmon"
+    },
+    "as:summary": {
+        "@value": "Techie, Dad, Salesforce, PMC Chair of http://streams.apache.org"
+    },
+    "as:preferredUsername": "steveblackmon",
+    "as:outbox": {
+        "@id": "https://mastodon.social/users/steveblackmon/outbox"
+    },
+    "as:name": "Steve Blackmon",
+    "as:inbox": {
+        "@id": "https://mastodon.social/users/steveblackmon/inbox"
+    },
+    "as:id": [
+        {
+            "@id": "https://mastodon.social/users/steveblackmon"
+        },
+        "https://mastodon.social/@steveblackmon"
+    ],
+    "as:following": {
+        "@id": "https://mastodon.social/users/steveblackmon/following"
+    },
+    "as:followers": {
+        "@id": "https://mastodon.social/users/steveblackmon/followers"
+    },
+    "vcard:given-name": "Steve",
+    "vcard:family-name": "Blackmon",
+    "vcard:email": "sblackmon@apache.org",
+    "@type": "as:Person",
+    "@context": {
+        "schema": "https://schema.org/",
+        "owl": "http://www.w3.org/2002/07/owl#",
+        "asfext": "http://projects.apache.org/ns/asfext#",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+        "vcard": "http://www.w3.org/2006/vcard/ns#",
+        "sec": "https://w3id.org/security/v1",
+        "as": "https://www.w3.org/ns/activitystreams#",
+        "doap": "http://usefulinc.com/ns/doap#",
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "ldp": "http://www.w3.org/ns/ldp#",
+        "foaf": "http://xmlns.com/foaf/0.1/"
+    }
+}

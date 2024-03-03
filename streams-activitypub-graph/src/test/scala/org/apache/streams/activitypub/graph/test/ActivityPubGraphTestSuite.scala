@@ -8,6 +8,7 @@ import org.junit.platform.suite.api.SuiteDisplayName;
 
 /**
  * ActivityPubServletsTestSuite
+ * Runs all streams-activitypub-graph tests in order, with extension activated
  */
 
 object ActivityPubGraphTestSuite {
@@ -22,7 +23,10 @@ object ActivityPubGraphTestSuite {
 @Order(Order.DEFAULT)
 @SelectClasses(Array(
   classOf[org.apache.streams.activitypub.graph.test.cases.GraphDatabaseServerAvailableTest],
-  classOf[org.apache.streams.activitypub.graph.test.cases.WebfingerGraphImplTest]
+  classOf[org.apache.streams.activitypub.graph.test.cases.JsonSchemaValidityTest],
+  classOf[org.apache.streams.activitypub.graph.test.cases.JsonLdFrameValidityTest],
+  classOf[org.apache.streams.activitypub.graph.test.cases.WebfingerGraphImplTest],
+  classOf[org.apache.streams.activitypub.graph.test.cases.ProfileGraphImplTest]
 ))
 class ActivityPubGraphTestSuite {
 

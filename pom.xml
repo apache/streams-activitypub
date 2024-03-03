@@ -364,6 +364,7 @@
         <httpcomponents.client.version>4.5.13</httpcomponents.client.version>
         <jackson.version>2.16.0</jackson.version>
         <jakarta.version>6.0.0</jakarta.version>
+        <jakarta-json.version>2.0.1</jakarta-json.version>
         <jakarta-ws.version>3.1.0</jakarta-ws.version>
         <jena.version>5.0.0-rc1</jena.version>
         <jetty.version>12.0.6</jetty.version>
@@ -378,6 +379,7 @@
         <jaxbutil.version>2.1.0</jaxbutil.version>
         <netty.version>4.1.105.Final</netty.version>
         <slf4j.version>2.0.9</slf4j.version>
+        <titanium.version>1.4.0</titanium.version>
         <log4j.version>2.22.0</log4j.version>
         <logback.version>1.4.14</logback.version>
         <protobuf.version>3.16.3</protobuf.version>
@@ -455,19 +457,27 @@
         </extensions>
         <plugins>
             <plugin>
+                <groupId>com.googlecode.maven-download-plugin</groupId>
+                <artifactId>download-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
                 <groupId>net.alchim31.maven</groupId>
                 <artifactId>scala-maven-plugin</artifactId>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-remote-resources-plugin</artifactId>
             </plugin>
         </plugins>
@@ -567,6 +577,7 @@
                         <addCompileSourceRoot>true</addCompileSourceRoot>
                         <annotationStyle>none</annotationStyle>
                         <customAnnotator>org.apache.streams.plugins.JuneauPojoAnnotator</customAnnotator>
+                        <customDateTimePattern>yyyy-MM-dd'T'HH:mm:ssZ</customDateTimePattern>
                         <generateBuilders>true</generateBuilders>
                         <includeGeneratedAnnotation>false</includeGeneratedAnnotation>
                     </configuration>
@@ -627,6 +638,7 @@
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>build-helper-maven-plugin</artifactId>
+                    <version>${build-helper.plugin.version}</version>
                     <executions>
                         <execution>
                             <id>add-schemas</id>
@@ -690,14 +702,19 @@
                     </configuration>
                     <dependencies>
                         <dependency>
-                            <groupId>org.apache.maven.surefire</groupId>
-                            <artifactId>surefire-junit-platform</artifactId>
-                            <version>${surefire.version}</version>
-                        </dependency>
-                        <dependency>
                             <groupId>org.junit.jupiter</groupId>
                             <artifactId>junit-jupiter-engine</artifactId>
                             <version>${junit.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.junit.jupiter</groupId>
+                            <artifactId>junit-jupiter-params</artifactId>
+                            <version>${junit.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>org.apache.maven.surefire</groupId>
+                            <artifactId>surefire-junit-platform</artifactId>
+                            <version>${surefire.version}</version>
                         </dependency>
                         <dependency>
                             <groupId>org.junit.platform</groupId>
@@ -793,34 +810,6 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-dependency-plugin</artifactId>
                     <version>${dependency.plugin.version}</version>
-                    <executions>
-                        <execution>
-                            <id>unpack-schemas</id>
-                            <phase>generate-sources</phase>
-                            <goals>
-                                <goal>unpack-dependencies</goal>
-                            </goals>
-                            <configuration>
-                                <excludeTransitive>true</excludeTransitive>
-                                <includeGroupIds>org.apache.streams</includeGroupIds>
-                                <includeScope>compile</includeScope>
-                                <includeTypes>zip</includeTypes>
-                            </configuration>
-                        </execution>
-                        <execution>
-                            <id>unpack-test-resources</id>
-                            <phase>process-test-resources</phase>
-                            <goals>
-                                <goal>unpack-dependencies</goal>
-                            </goals>
-                            <configuration>
-                                <excludeTransitive>true</excludeTransitive>
-                                <includeGroupIds>org.apache.streams</includeGroupIds>
-                                <includeScope>test</includeScope>
-                                <includeTypes>zip</includeTypes>
-                            </configuration>
-                        </execution>
-                    </executions>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -900,6 +889,12 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>

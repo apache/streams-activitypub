@@ -1,0 +1,7 @@
+BASE <>
+PREFIX as: <https://www.w3.org/ns/activitystreams#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+ASK WHERE {
+    ?resourceParam rdf:type ?type ;
+    FILTER(?type IN (as:Profile, as:Person, as:Organization)) .
+}

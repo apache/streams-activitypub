@@ -1,0 +1,18 @@
+{
+  "@context": {
+      "@language": "en",
+      "@vocab": "https://www.w3.org/ns/activitystreams#",
+      "subject": {"@id": "subject"},
+      "aliases": {"@id": "aliases", "@type": "@id"}
+  },
+  "subject": {},
+  "aliases": {},
+  "links": [
+    {
+      "rel": {},
+      "type": {},
+      "href": {},
+      "titles": {}
+    }
+  ]
+}

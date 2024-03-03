@@ -1,0 +1,13 @@
+{
+  "@context": "https://www.w3.org/ns/activitystreams#",
+  "type": "Person",
+  "id": "https://mastodon.social/users/steveblackmon",
+  "url": "https://people.apache.org/~sblackmon",
+  "summary": "Techie, Dad, Salesforce, PMC Chair of http://streams.apache.org",
+  "preferredUsername": "steveblackmon",
+  "outbox": "https://mastodon.social/users/steveblackmon/outbox",
+  "name": "Steve Blackmon",
+  "inbox": "https://mastodon.social/users/steveblackmon/inbox",
+  "following": "https://mastodon.social/users/steveblackmon/following",
+  "followers": "https://mastodon.social/users/steveblackmon/followers"
+}

@@ -1,0 +1,17 @@
+{
+  "@context": {
+      "@language": "en",
+      "@vocab": "https://www.w3.org/ns/activitystreams#",
+      "summary": {"@id": "summary", "@language": "en"}
+  },
+  "id": {},
+  "@type": ["Profile", "Person", "Organization"],
+  "name": {},
+  "url": {},
+  "summary": {},
+  "preferredUsername": {},
+  "outbox": {},
+  "inbox": {},
+  "following": {},
+  "followers": {}
+}

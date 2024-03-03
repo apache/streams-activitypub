@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "id": "#",
+  "type": "object",
+  "$license": [
+    "http://www.apache.org/licenses/LICENSE-2.0"
+  ],
+  "javaType" : "org.apache.streams.activitypub.api.pojo.profile.ProfileQueryResponse",
+  "javaInterfaces": ["java.io.Serializable"],
+  "additionalProperties": false,
+  "properties": {
+    "@context": {
+      "type": "string",
+      "format": "uri"
+    },
+    "id": {
+      "type": "string",
+      "format": "uri"
+    },
+    "@type": {
+      "type": "string",
+        "enum": [
+          "Organization",
+          "Person",
+          "Profile"
+        ]
+    },
+    "following": {
+      "type": "string",
+      "format": "uri"
+    },
+    "followers": {
+      "type": "string",
+      "format": "uri"
+    },
+    "inbox": {
+      "type": "string",
+      "format": "uri"
+    },
+    "outbox": {
+      "type": "string",
+      "format": "uri"
+    },
+    "preferredUsername": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "published": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "publicKey": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uri"
+        },
+        "owner": {
+          "type": "string",
+          "format": "uri"
+        },
+        "publicKeyPem": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

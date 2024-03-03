@@ -2,11 +2,13 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "id": "#",
   "type": "object",
-  "javaType": "org.apache.streams.activitypub.graph.config.WebfingerGraphImplConfig",
+  "javaType": "org.apache.streams.activitypub.api.pojo.profile.ProfileQueryRequest",
   "javaInterfaces": [
     "java.io.Serializable"
   ],
-  "extends": {
-    "$ref": "BaseGraphImplConfig.json"
+  "properties": {
+    "username": {
+      "type": "string"
+    }
   }
 }
