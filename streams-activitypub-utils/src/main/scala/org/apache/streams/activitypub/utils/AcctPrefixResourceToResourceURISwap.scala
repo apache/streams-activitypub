@@ -7,19 +7,27 @@ import org.apache.juneau.swap.StringSwap
 
 import java.net.URI
 
+/**
+ * Swaps between a URI and a string with the format acct:preferredName@domain
+ * Used by the Webfinger Query endpoint
+ */
 object AcctPrefixResourceToResourceURISwap {
+
+  val unswapExtractFields = "acct:(.*)@(.*)".r
+
   def doSwap(uri: URI): String = {
     val domain = uri.getHost
     val preferredName = uri.getPath.split("/").last
     s"acct:${preferredName}@${domain}"
   }
   def doUnswap(string: String): URI = {
-    val preferredName = string.split("@")(0)
-    val domain = string.split("@")(1)
-    val uriBuilder = new URIBuilder()
-      .setScheme("https")
-      .setHost(domain)
-      .setPath(s"/users/${preferredName}")
+    val uriBuilder = new URIBuilder().setScheme("https")
+    val (preferredName, domain) = string match {
+      case unswapExtractFields(preferredName, domain) => (preferredName, domain)
+      case _ => throw new IllegalArgumentException(s"Could not parse $string")
+    }
+    uriBuilder.setHost(domain)
+    uriBuilder.setPath(s"/users/${preferredName}")
     uriBuilder.build()
   }
 }

@@ -1,7 +1,6 @@
 @base         <http://streams.apache.org.org/rdf> .
 @prefix as:   <https://www.w3.org/ns/activitystreams#> .
 @prefix asfext: <http://projects.apache.org/ns/asfext#> .
-#@prefix dc:   <http://purl.org/dc/terms/> .
 @prefix doap: <http://usefulinc.com/ns/doap#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -34,15 +33,15 @@
 .
 
 <https://mastodon.social/users/steveblackmon> a as:Person ;
-   as:id "https://mastodon.social/@steveblackmon" ;
-   as:name "Steve Blackmon"@en ;
-   vcard:given-name "Steve"@en ;
-   vcard:family-name "Blackmon"@en ;
+   as:name "Steve Blackmon" ;
+   vcard:given-name "Steve" ;
+   vcard:family-name "Blackmon" ;
    vcard:email "sblackmon@apache.org" ;
-   as:summary "Techie, Dad, Salesforce, PMC Chair of http://streams.apache.org"@en ;
-   as:preferredUsername "steveblackmon"@en ;
+   as:summary "Techie, Dad, Salesforce, PMC Chair of http://streams.apache.org" ;
+   as:preferredUsername "steveblackmon" ;
+   as:url <https://people.apache.org/~sblackmon> ;
    as:inbox <https://mastodon.social/users/steveblackmon/inbox> ;
    as:outbox <https://mastodon.social/users/steveblackmon/outbox> ;
    as:followers <https://mastodon.social/users/steveblackmon/followers> ;
    as:following <https://mastodon.social/users/steveblackmon/following> ;
-.
+   .

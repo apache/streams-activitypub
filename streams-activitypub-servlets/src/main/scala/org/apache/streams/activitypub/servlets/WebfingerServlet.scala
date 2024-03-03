@@ -13,6 +13,7 @@ import org.apache.juneau.rest.servlet.BasicRestServlet
 import org.apache.streams.activitypub.api.WebfingerApi
 import org.apache.streams.activitypub.api.pojo.webfinger.WebfingerQueryRequest
 import org.apache.streams.activitypub.api.pojo.webfinger.WebfingerQueryResponse
+import org.apache.streams.activitypub.graph.impl.BaseGraphImpl
 import org.apache.streams.activitypub.graph.impl.WebfingerGraphImpl
 import org.apache.streams.activitypub.remote.WebfingerRest
 

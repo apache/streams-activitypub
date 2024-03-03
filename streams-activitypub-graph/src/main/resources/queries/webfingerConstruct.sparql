@@ -1,0 +1,8 @@
+BASE <https://www.w3.org/ns/activitystreams#>
+PREFIX as: <https://www.w3.org/ns/activitystreams#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+CONSTRUCT {
+    <#response> <#subject> ?resource .
+} WHERE {
+    BIND( ?resourceParam as ?resource )
+}

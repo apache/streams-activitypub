@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema",
   "id": "#",
   "type": "object",
-  "javaType": "org.apache.streams.activitypub.graph.test.config.ActivityPubGraphTestSuiteExtensionConfig",
+  "javaType": "org.apache.streams.activitypub.graph.config.BaseGraphImplConfig",
   "javaInterfaces": [
     "java.io.Serializable"
   ],
@@ -12,11 +12,19 @@
       "format": "uri",
       "required": true
     },
-    "testDatasetResources": {
+    "defaultDataset": {
+      "type": "string",
+      "required": true
+    },
+    "defaultGraph": {
+      "type": "string",
+      "required": false
+    },
+    "datasetResources": {
       "type": "array",
       "items": {
-          "type": "string",
-          "format": "uri"
+        "type": "string",
+        "format": "uri"
       },
       "required": true
     }

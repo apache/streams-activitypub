@@ -1,0 +1,16 @@
+BASE <https://www.w3.org/ns/activitystreams#>
+PREFIX as: <https://www.w3.org/ns/activitystreams#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+CONSTRUCT {
+    ?subject as:id ?subject ;
+             rdf:type ?type ;
+             ?predicate ?object
+} WHERE {
+    BIND( ?subjectParam as ?subject ) {
+       SELECT * WHERE {
+           ?subject rdf:type ?type .
+           FILTER(?type IN (as:Profile, as:Person, as:Organization)) .
+           ?subject ?predicate ?object
+       }
+    }
+}

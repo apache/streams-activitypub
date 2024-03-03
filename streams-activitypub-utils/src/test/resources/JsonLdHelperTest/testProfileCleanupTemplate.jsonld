@@ -1,0 +1,15 @@
+{
+  "@context": {
+      "@vocab": "https://www.w3.org/ns/activitystreams#",
+      "id": "@id",
+      "type": "@type"
+  },
+  "name": {},
+  "url": {},
+  "summary": {},
+  "preferredUsername": {},
+  "outbox": {},
+  "inbox": {},
+  "following": {},
+  "followers": {}
+}

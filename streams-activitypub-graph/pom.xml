@@ -42,6 +42,11 @@
         </dependency>
         <dependency>
             <groupId>org.apache.streams.activitypub</groupId>
+            <artifactId>streams-activitypub-server</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.streams.activitypub</groupId>
             <artifactId>streams-activitypub-utils</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -59,7 +64,6 @@
             <version>${jena.version}</version>
             <type>jar</type>
         </dependency>
-
         <!-- streams-graph test dependencies -->
         <dependency>
             <groupId>org.apache.jena</groupId>
@@ -80,6 +84,9 @@
         <testSourceDirectory>src/test/scala</testSourceDirectory>
         <resources>
             <resource>
+                <directory>src/main/jsonschema</directory>
+            </resource>
+            <resource>
                 <directory>src/main/resources</directory>
             </resource>
         </resources>
@@ -89,6 +96,29 @@
             </testResource>
         </testResources>
         <plugins>
+            <!--
+                  per w3c social working group mailing list discussion,
+                  this is the most up-to-date rdf/owl definition for
+                  activity streams 2 ontology
+                -->
+            <plugin>
+                <groupId>com.googlecode.maven-download-plugin</groupId>
+                <artifactId>download-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>download-activitystreams2-ontology</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>wget</goal>
+                        </goals>
+                        <configuration>
+                            <url>https://raw.githubusercontent.com/steve-bate/activitypub-ontology/main/activitystreams2.ttl</url>
+                            <unpack>false</unpack>
+                            <outputDirectory>${project.build.outputDirectory}</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.jsonschema2pojo</groupId>
                 <artifactId>jsonschema2pojo-maven-plugin</artifactId>
@@ -167,7 +197,7 @@
                                 <resource>
                                     <directory>..</directory>
                                     <includes>
-                                        <include>*.ttl</include>
+                                        <include>doap.ttl</include>
                                     </includes>
                                 </resource>
                             </resources>
