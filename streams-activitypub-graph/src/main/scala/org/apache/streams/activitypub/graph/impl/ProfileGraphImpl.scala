@@ -70,14 +70,6 @@ class ProfileGraphImpl(config: ProfileGraphImplConfig) extends BaseGraphImpl(con
     val askResult = askExecution.execAsk()
     if (!askResult) throw new Exception("Requested resource not found in dataset.")
 
-//    val selectQueryBody: String = Source.fromResource("queries/profileSelect.sparql").getLines.mkString
-//    val selectQueryTemplate: ParameterizedSparqlString = new ParameterizedSparqlString(selectQueryBody)
-//    selectQueryTemplate.setIri("resourceParam", profileUri.toString)
-//    val selectQuery = selectQueryTemplate.asQuery()
-//    val selectExecution: QueryExecutionHTTP = sparqlBuilder.query(selectQuery).build()
-//    val resultSet: ResultSet = selectExecution.execSelect()
-//    val model: Model = RDFOutput.encodeAsModel(resultSet)
-
     val constructQueryBody: String = Source.fromResource("queries/profileConstruct.sparql").getLines.mkString
     val constructQueryTemplate: ParameterizedSparqlString = new ParameterizedSparqlString(constructQueryBody)
     constructQueryTemplate.setIri("resourceParam", profileUri.toString)
